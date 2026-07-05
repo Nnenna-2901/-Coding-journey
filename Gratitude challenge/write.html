@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Journal</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f7d9ff, #e8ccff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Floral background decoration */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      z-index: -1;
+    }
+
+    .journal-card {
+      background: rgba(255, 255, 255, 0.9);
+      max-width: 500px;
+      width: 100%;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px rgba(140, 60, 180, 0.3);
+    }
+
+    .journal-card h2 {
+      text-align: center;
+      color: #7b2cbf;
+      margin-bottom: 10px;
+    }
+
+    .journal-card p {
+      text-align: center;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      border-radius: 16px;
+      border: 1px solid #d7b6ff;
+      padding: 16px;
+      font-size: 15px;
+      background: #f9efff;
+      color: #4a0072;
+      resize: none;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      background: linear-gradient(135deg, #c77dff, #9d4edd);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.95;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="journal-card">
+    <h2 id="dayTitle">Day</h2>
+    <p id="questionText">Your prompt will appear here</p>
+
+    <textarea placeholder="Write your thoughts here..."></textarea>
+
+    <button>Save Reflection</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const day = params.get("day");
+
+    const questions = {
+      1: "Write about your biggest dream.",
+      
+    };
+
+    document.getElementById("dayTitle").textContent = `Day ${day}`;
+    document.getElementById("questionText").textContent =
+      questions[day] || "Take a quiet moment to reflect.";
+  </script>
+
+</body>
+</html>
